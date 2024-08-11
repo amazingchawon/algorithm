@@ -23,7 +23,7 @@ for t in range(1, T+1):
         for j in range(5):
             row = arr[j]
             if len(row) >= i +1:    # 현재 행에 i번째 글자가 존재하는지 범위 체크
-                tmp += row[i]
-        answer += tmp
+                tmp += row[i]       # tmp 갱신
+        answer += tmp               # answer 갱신
 
     print(f'#{t} {answer}')
