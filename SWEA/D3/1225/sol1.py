@@ -38,6 +38,10 @@ for _ in range(10):
             cnt += 1                    # 1 추가
 
     # 답 출력
+    # for 문을 사용하지 않고 slicing 으로 구현 가능
+    # if front > rear :                 # 큐의 머리가 꼬리보다 클 경우 (머리 ~ 큐의 끝 + 큐의 처음 ~ 꼬리)로 변형
+    #     answer = data[front+1:] + data[0:rear+1]
+    # print(*answer)
     print(f'#{N}', end=' ')             # 번호 출력
     for i in range(front, front+8):     # front부터 출력
         index = (i+1) % 9               # index 변환, data의 전체 길이인 9로 나누어 줌
