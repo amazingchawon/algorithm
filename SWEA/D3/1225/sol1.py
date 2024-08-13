@@ -24,7 +24,7 @@ for _ in range(10):
     cnt = 1     # 1번 반복할 때마다 증가시킬 변수
 
     while True:
-        tmp = dequeue(data)         # 제일 오래전에 들어온 값을 tmp에 저장
+        tmp = dequeue(data)             # 제일 오래전에 들어온 값을 tmp에 저장
 
         if tmp - cnt <= 0:              # 비밀번호 갱신 종료 조건 : 변환한 값이 0보다 작아지면
             enqueue(data, 0)            # 0으로 추가
