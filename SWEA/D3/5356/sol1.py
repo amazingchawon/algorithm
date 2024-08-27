@@ -19,11 +19,8 @@ for t in range(1, T+1):
     answer = ''
 
     for i in range(max_length): # 가장 긴 단어 기준,
-        tmp = ''                # 현재 열에 있는 글자를 저장할 변수
-        for j in range(5):
-            row = arr[j]
-            if len(row) >= i +1:    # 현재 행에 i번째 글자가 존재하는지 범위 체크
-                tmp += row[i]       # tmp 갱신
-        answer += tmp               # answer 갱신
+        for word sin arr:
+            if len(word) >= i +1:    # 현재 행에 i번째 글자가 존재하는지 범위 체크
+                answer += word[i]       # tmp 갱신
 
     print(f'#{t} {answer}')
