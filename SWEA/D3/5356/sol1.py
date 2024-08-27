@@ -19,7 +19,7 @@ for t in range(1, T+1):
     answer = ''
 
     for i in range(max_length): # 가장 긴 단어 기준,
-        for word sin arr:
+        for word in arr:
             if len(word) >= i +1:    # 현재 행에 i번째 글자가 존재하는지 범위 체크
                 answer += word[i]       # tmp 갱신
 
