@@ -1,7 +1,9 @@
 # [A형기출] 2105 디저트 카페
-#
-# import sys
-# sys.stdin = open('input.txt', 'r')
+# 그리디
+# fail
+
+import sys
+sys.stdin = open('input.txt', 'r')
 
 dx = [1, 1, -1, -1]
 dy = [1, -1, -1, 1]

@@ -1,4 +1,6 @@
 # [A형기출] 2105 디저트 카페
+# 그리디
+# fail
 
 import sys
 sys.stdin = open('input.txt', 'r')
