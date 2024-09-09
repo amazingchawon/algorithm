@@ -1,7 +1,6 @@
 # [D3] 5105 미로의 거리
 
 import sys
-
 sys.stdin = open('input.txt', 'r')
 
 dx = [-1, 1, 0, 0]
