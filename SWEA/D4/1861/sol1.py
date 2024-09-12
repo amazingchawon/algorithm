@@ -8,6 +8,7 @@ def DFS(V):
 
     while stack:
         x, y = stack.pop()
+        visited[x][y] = 1
         for dx, dy in [[-1, 0], [0, 1], [1, 0], [0, -1]]:
             nx, ny = x + dx, y + dy
             if 0 <= nx < N and 0 <= ny < N and arr[x][y] + 1 == arr[nx][ny]:
@@ -27,9 +28,12 @@ for t in range(1, T+1):
     room_num = 0
     max_move = 0
     level = [[0] * N for _ in range(N)]
+    visited = [[0] * N for _ in range(N)]   # 가지치기 용 : 이전 순회에서 지나간 곳이라면, 거기서 시작하는게 지나가는 방의 개수가 무조건 작을 수 밖에 없음
 
     for i in range(N):
         for j in range(N):
+            if visited[i][j]:               # 이미 지나간 곳이 시작점이 될 필요 X, 따라서 PASS
+                continue
             level[i][j] = 1
             tmp_room, tmp_move = arr[i][j], DFS((i, j))
             if max_move < tmp_move:                 # 최대 움직인 방 수 보다 현재 위치에서 움직인 방 수가 더 많으면,
