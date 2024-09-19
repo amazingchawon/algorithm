@@ -1,5 +1,4 @@
 # [D3] 5250 최소 비용
-# 테스트케이스 10개 중 4개만 정답처리
 
 import sys
 from collections import deque
@@ -36,7 +35,7 @@ for t in range(1, T+1):
     arr = [list(map(int, input().split())) for _ in range(N)]
 
     cost = [[INF] * N for _ in range(N)]
-    cost[0][0] = arr[0][0]
+    cost[0][0] = 0
 
     BFS((0, 0), (N-1, N-1))
 
