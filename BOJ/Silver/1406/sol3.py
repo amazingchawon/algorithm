@@ -15,7 +15,7 @@ for m in range(M):
         left.append(token)
     elif command == 'L' and left:
         right.append(left.pop())
-    elif command == 'D' and rightㅋ:
+    elif command == 'D' and right:
         left.append(right.pop())
     elif command == 'B' and left:
         left.pop()
