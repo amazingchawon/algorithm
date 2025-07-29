@@ -1,28 +1,29 @@
 # [S2] 1874 스택 수열
+from collections import deque
 
 # STEP 1. 입력 받기
 N = int(input())
-target = [int(input()) for _ in range(N)]
+target_seq = [int(input()) for _ in range(N)]
 idx = 0
 
-numbers = [i for i in range(1, N+1)]
+nxt_numbers = deque(range(1, N + 1))
 stack = []
-expr = []
-is_possible = True
+operations = []
+possible = True
 
 # STEP 2. 순회하며 수열 만들기
-for num in target:
-    while numbers and num >= numbers[0]:
-        stack.append(numbers.pop(0))
-        expr.append('+')
-    if num == stack[-1]:
+for target_num in target_seq:
+    while nxt_numbers and target_num >= nxt_numbers[0]:
+        stack.append(nxt_numbers.popleft())
+        operations.append('+')
+    if target_num == stack[-1]:
         stack.pop()
-        expr.append('-')
+        operations.append('-')
     else:
-        is_possible = False
+        possible = False
+        break
 
-if is_possible:
-    for token in expr:
-        print(token)
+if possible:
+    print('\n'.join(operations))
 else:
     print('NO')
