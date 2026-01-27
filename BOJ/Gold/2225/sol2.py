@@ -16,7 +16,6 @@ for k in range(K+1):
 # STEP 2.2. dp[N][K] 구하기
 for n in range(1, N + 1):
     for k in range(2, K + 1):
-        for x in range(n+1):
-            dp[n][k] = (dp[n][k-1] + dp[x-1][k]) % 1000000000
+        dp[n][k] = (dp[n][k-1] + dp[n-1][k]) % 1000000000
 
 print(dp[N][K])
