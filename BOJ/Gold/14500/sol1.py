@@ -1,0 +1,58 @@
+# [G4] 14500 테트로미노
+
+# STEP 1. 입력 받기
+N, M = map(int, input().split())
+arr = [list(map(int, input().split())) for _ in range(N)]
+
+# STEP 2. 1자, ㄱ자, ㄹ자 최대 합 구하는 함수 정의
+def find_4(x, y):
+    stack = [(x, y, {(x, y)}, arr[x][y])]                      # (x, y, 현재 경로, 모양 합)
+    tmp = 0
+
+    while stack:
+        x, y, path, shape_sum = stack.pop()
+        # STEP 2.1. 종료 조건
+        if len(path) == 4:
+            tmp = max(tmp, shape_sum)
+        else:
+            for dx, dy in [(0, 1), (1, 0), (0, -1)]:            # 위로는 안 올라가게
+                tx, ty = x + dx, y + dy
+                if 0 <= tx < N and 0 <= ty < M and (tx, ty) not in path:
+                    stack.append((tx, ty, path|{(tx, ty)}, shape_sum + arr[tx][ty]))
+
+    return tmp
+
+# STEP 3. ㅗ자 최대 합 구하는 함수 정의
+def find_3(x, y):
+    tmp = 0
+
+    # STEP 3.1. 세로로
+    if x + 2 < N:
+        vertical_sum = arr[x][y] + arr[x+1][y] + arr[x+2][y]
+        # STEP 3.1.2. ㅓ 모양
+        if 0 <= y -1:
+            tmp = max(tmp, vertical_sum + arr[x+1][y-1])
+        # STEP 3.1.3. ㅏ 모양
+        if y + 1 < M:
+            tmp = max(tmp, vertical_sum + arr[x+1][y+1])
+
+    # STEP 3.2. 가로로
+    if y + 2 < M:
+        hori_sum = arr[x][y] + arr[x][y+1] + arr[x][y+2]
+        # STEP 3.2.1. ㅗ 모양
+        if 0 <= x - 1:
+            tmp = max(tmp, hori_sum + arr[x-1][y+1])
+        # STEP 3.2.2. ㅜ 모양
+        if x + 1 < N:
+            tmp = max(tmp, hori_sum + arr[x+1][y+1])
+
+    return tmp
+
+# STEP 4. 테트로미노 최대 합 구하기
+res = 0
+
+for n in range(N):
+    for m in range(M):
+        res = max(find_4(n, m), find_3(n, m), res)
+
+print(res)
